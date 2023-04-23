@@ -17,13 +17,25 @@ inquirer
     },
     {
       type: "input",
+      name: "motivation",
+      message: "What were your motivations for creating the project?",
+    },
+    {
+      type: "input",
+      name: "challenges",
+      message: "What were some challenges you faced?",
+    },
+    {
+      type: "input",
       name: "installation",
-      message: "How do you install your project?",
+      message:
+        "What are the steps to install your project? Provide a step-by-step.",
     },
     {
       type: "input",
       name: "usage",
-      message: "How do you use your project?",
+      message:
+        "What are some instructions and examples for use of this project?",
     },
     {
       type: "input",
@@ -33,12 +45,13 @@ inquirer
     {
       type: "input",
       name: "contribution",
-      message: "Who contributed on your project?",
+      message: "Who contributed on your project? (include Github profiles)",
     },
     {
       type: "input",
       name: "tests",
-      message: "How do you test your application?",
+      message:
+        "Are there any tests for this project? If so, how do you run them?",
     },
     {
       type: "input",
@@ -51,34 +64,46 @@ inquirer
       message: "What is your email address?",
     },
   ])
+
   // title, description, table of contents, installation, usage, license, contributing, tests, questions
   .then((response) => {
+    console.log(response);
     const mdString = `
 # ${response.title}
 
 ## Description
-
+**Here is a short description of this project:**
 ${response.description}
 
-## table of Contents
+**My motivation for making this was:**
+${response.motivation}
 
-1.[Installation](#Installation)
+**Some challenges I faced were:**
+${response.challenges}
 
-2.[Usage](#Usage)
 
-3.[License](#License)
+## Table of Contents
 
-4.[Contributing](#Contributing)
+1.[Installation](#installation)
 
-5.[Tests](#Tests)
+2.[Usage](#usage)
 
-6.[Questions](#Questions)
+3.[License](#license)
+
+4.[Contributing](#contributing)
+
+5.[Tests](#tests)
+
+6.[Questions](#questions)
 
 ## Installation
+Here's a step by step for how to install this project:
 
 ${response.installation}
 
 ## Usage
+
+Here are some instructions and examples of use for our project:
 
 ${response.usage}
 
@@ -88,16 +113,25 @@ ${response.license}
 
 ## Contributing
 
-${response.contributing}
+Huge thanks to these individuals, see respective Github profiles:
+
+${response.contribution}
 
 ## Tests
+
+Here are the tests we implemented for the project:
 
 ${response.tests}
 
 ## Questions
 
-<${response.github}>
-<${response.email}>
+Here is my personal Github Repo, with relevant links:
+
+[${response.github}](https://github.com/${response.github})
+
+For any other questions, please feel free to follow up with me at my email address:
+
+${response.email}
 
 `;
 
@@ -108,3 +142,17 @@ ${response.tests}
       }
     });
   });
+
+//   This is a readme generator CLI, taking in user input and creating a README based on that
+
+//   As a user, I wanted a quick way to create my readme to make the steps of creating future projects more efficient
+
+//   Getting the right prompts to really round out what I wanted to portray in any given readme, and making sure all the bases were covered.
+
+//   Create file - create a pakage.json - install inquirer - run index.js
+
+//   This is a very useful project, it is applicable to any given project that requires a readME, and will be used early on in the project to create a filled template.
+
+//   https://github.com/RyanWood2334
+
+//   ryanwood_2334@yahoo.com
