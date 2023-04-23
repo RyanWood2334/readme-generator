@@ -23,7 +23,7 @@ inquirer
     {
       type: "input",
       name: "usage",
-      message: "How do do you use your project?",
+      message: "How do you use your project?",
     },
     {
       type: "input",
@@ -38,7 +38,7 @@ inquirer
     {
       type: "input",
       name: "tests",
-      message: "Any tests implemented?",
+      message: "How do you test your application?",
     },
     {
       type: "input",
@@ -54,8 +54,52 @@ inquirer
   // title, description, table of contents, installation, usage, license, contributing, tests, questions
   .then((response) => {
     const mdString = `
-    
-    `;
+# ${response.title}
+
+## Description
+
+${response.description}
+
+## table of Contents
+
+1.[Installation](#Installation)
+
+2.[Usage](#Usage)
+
+3.[License](#License)
+
+4.[Contributing](#Contributing)
+
+5.[Tests](#Tests)
+
+6.[Questions](#Questions)
+
+## Installation
+
+${response.installation}
+
+## Usage
+
+${response.usage}
+
+## License
+
+${response.license}
+
+## Contributing
+
+${response.contributing}
+
+## Tests
+
+${response.tests}
+
+## Questions
+
+<${response.github}>
+<${response.email}>
+
+`;
 
     console.log("response", JSON.stringify(response));
     fs.writeFile("README.md", mdString, (err) => {
