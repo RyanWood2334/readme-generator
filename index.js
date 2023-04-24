@@ -1,14 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// const init = async () => {
-//   try {
-//     await getUserData();
-//     await extractAndWrite();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 // title, description, table of contents, installation, usage, license, contributing, tests, questions
 const getUserData = () => {
   inquirer
@@ -81,6 +73,7 @@ const getUserData = () => {
         message: "What is your email address?",
       },
     ])
+    //
     .then((response) => {
       extractAndWrite(response);
       console.log(response);
@@ -96,14 +89,17 @@ const extractAndWrite = (response) => {
   ![Badge](https://img.shields.io/static/v1?label=License&message=${response.license}&color=<GREEN>)
   
   ## Description
-  **Here is a short description of this project:**
+  Here is a short description of this project:
   ${response.description}
   
-  **My motivation for making this was:**
+  Some challenges I faced were:
+  ${response.challenges}
+
+  ## User Story
+
+  My motivation for making this was:
   ${response.motivation}
   
-  **Some challenges I faced were:**
-  ${response.challenges}
   
   
   ## Table of Contents
@@ -169,7 +165,7 @@ const extractAndWrite = (response) => {
 
 getUserData();
 
-//**testing function **
+//**testing function (broken with wrapper function) **
 // exports.extractAndWrite = (response) => {
 //   console.log(response);
 //   const mdString = `
@@ -247,23 +243,11 @@ getUserData();
 //     }
 //   });
 // };
-//   This is a readme generator CLI, taking in user input and creating a README based on that
 
-//   As a user, I wanted a quick way to create my readme to make the steps of creating future projects more efficient
-
-//   Getting the right prompts to really round out what I wanted to portray in any given readme, and making sure all the bases were covered.
-
-//   Create file - create a pakage.json - install inquirer - run index.js
-
-//   This is a very useful project, it is applicable to any given project that requires a readME, and will be used early on in the project to create a filled template.
-
-//   https://github.com/RyanWood2334
-
-//   ryanwood_2334@yahoo.com
 const test1 = {
   title: "README generator",
   description:
-    "This is a readme generator CLI, taking in user input and creating a README based on that",
+    "This is a readme generator CLI, taking in user input and creating a README based on that data",
   motivation:
     "As a user, I wanted a quick way to create my readme to make the steps of creating future projects more efficient",
   challenges:
