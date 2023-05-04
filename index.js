@@ -156,7 +156,7 @@ const extractAndWrite = (response) => {
   `;
 
   console.log("response", JSON.stringify(response));
-  fs.writeFileSync("README.md", mdString, (err) => {
+  fs.writeFileSync("example-README.md", mdString, (err) => {
     if (err) {
       throw err;
     }
